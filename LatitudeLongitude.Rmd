@@ -38,7 +38,7 @@ Use the function: register_google(key = "Enter Key"
 <br>
 
 ```{r, echo=FALSE}
-register_google(key = "AIzaSyDxsI09B4Kt6dSjiGGoC6HTJc23vype0uQ")
+register_google(key = "***************************************")
 ```
 
 <br>
