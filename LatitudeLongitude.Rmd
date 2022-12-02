@@ -1,0 +1,97 @@
+---
+title: "LatitiudeLongitudeGeneration"
+author: "Athira B"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br>
+
+## Generating Latitude and Longitude from Addresses using Google Maps API
+
+This is an R Markdown document captures the process of generating latitude and longitude coordinates from the address field in police records using Google Maps API. This can help to pin point to the exact locations high in auto crimes.
+
+<br>
+
+#### 1. Loading Libraries
+
+<br>
+
+```{r}
+library(tidyverse) 
+library(maps)  
+library(ggmap)
+```
+
+<br>
+
+#### 2. Registering Google API key
+
+<br>
+
+Head to Google Cloud to get API key for Google Maps and register the key in R.
+Use the function: register_google(key = "Enter Key"
+
+<br>
+
+```{r, echo=FALSE}
+register_google(key = "AIzaSyDxsI09B4Kt6dSjiGGoC6HTJc23vype0uQ")
+```
+
+<br>
+
+#### 3. Upload File with Address
+
+<br>
+
+Upload the file that contains full address.
+
+<br>
+
+```{r}
+All.Crime.Data <- read_csv("/Users/Athira/Downloads/Case Study- Crime/Cali PD/ALL/ADDRESS UNIQUE.csv", show_col_types = FALSE)
+
+head(All.Crime.Data, 3)
+```
+
+<br>
+
+
+#### 4. Generate Geocode from Address Field
+
+<br>
+
+From the address field, latitude and longitude are generated.
+
+<br>
+
+```{r, results="hide"}
+df_ADDRESS <- All.Crime.Data %>% 
+  mutate_geocode(FULL_ADDRESS_UNIQUE)
+```
+
+```{r}
+head(df_ADDRESS,3)
+```
+
+
+<br>
+
+#### 5. Downloading the File
+
+<br>
+
+The file is then downloaded for visualisation in Tableau.
+
+<br>
+
+```{r}
+write.csv(df_ADDRESS,"/Users/Athira/Downloads/LongLatAddress.csv")
+```
+
+<br>
+
+
