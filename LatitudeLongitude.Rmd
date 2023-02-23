@@ -54,7 +54,6 @@ Upload the file that contains full address.
 ```{r}
 All.Crime.Data <- read_csv("/Users/Athira/Downloads/Case Study- Crime/Cali PD/ALL/ADDRESS UNIQUE.csv", show_col_types = FALSE)
 
-head(All.Crime.Data, 3)
 ```
 
 <br>
